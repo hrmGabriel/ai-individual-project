@@ -83,18 +83,18 @@ def run_experiment(
     featured_df = engineer_features(processed_df)
     X, y, feature_columns = build_xy(featured_df)
 
-    print("Gerando gráficos exploratórios...")
+    print("Gerando gráficos exploratórios...", flush=True)
     generate_exploratory_plots(featured_df, feature_columns, plots_dir)
-    print()
+    print(flush=True)
 
     run_rows: list[dict] = []
     plot_predictions: dict[str, np.ndarray] | None = None
 
-    print(f"Iniciando experimento com {len(SEEDS)} execuções...")
-    print()
+    print(f"Iniciando experimento com {len(SEEDS)} execuções...", flush=True)
+    print(flush=True)
 
     for seed in SEEDS:
-        print(f"Execução seed={seed}...")
+        print(f"Execução seed={seed}...", flush=True)
         X_train, X_test, y_train, y_test = train_test_split(
             X,
             y,
@@ -162,11 +162,11 @@ def run_experiment(
             results_dir / f"plot_predictions_seed_{PLOT_SEED}.npz",
             **plot_predictions,
         )
-        print("Gerando gráficos de resultados...")
+        print("Gerando gráficos de resultados...", flush=True)
         generate_result_plots(runs_df, plot_predictions, PLOT_SEED, plots_dir)
-        print()
+        print(flush=True)
 
     print_experiment_metadata(metadata)
     print_summary(summary_df)
-    print(f"Resultados salvos em {results_dir}")
-    print(f"Gráficos salvos em {plots_dir}")
+    print(f"Resultados salvos em {results_dir}", flush=True)
+    print(f"Gráficos salvos em {plots_dir}", flush=True)

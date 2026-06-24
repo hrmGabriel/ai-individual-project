@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from src.experiment_runner import run_experiment
+from src.validation import validate_experiment_outputs
 
 
 def main() -> None:
@@ -20,6 +21,7 @@ def main() -> None:
         plots_dir=plots_dir,
         results_dir=results_dir,
     )
+    validate_experiment_outputs(plots_dir, results_dir)
 
 
 if __name__ == "__main__":
