@@ -18,6 +18,7 @@ from src.feature_engineering import build_xy, engineer_features
 from src.linear_regression_model import ModelResult, train_linear_regression
 from src.preprocessing import preprocess
 from src.random_forest_model import N_ESTIMATORS, train_random_forest
+from src.visualization import generate_exploratory_plots, generate_result_plots
 
 SEEDS = list(range(1, 31))
 TEST_SIZE = 0.20
@@ -81,6 +82,10 @@ def run_experiment(
     processed_df, preprocessing_meta = preprocess(raw_df)
     featured_df = engineer_features(processed_df)
     X, y, feature_columns = build_xy(featured_df)
+
+    print("Gerando gráficos exploratórios...")
+    generate_exploratory_plots(featured_df, feature_columns, plots_dir)
+    print()
 
     run_rows: list[dict] = []
     plot_predictions: dict[str, np.ndarray] | None = None
@@ -157,8 +162,11 @@ def run_experiment(
             results_dir / f"plot_predictions_seed_{PLOT_SEED}.npz",
             **plot_predictions,
         )
+        print("Gerando gráficos de resultados...")
+        generate_result_plots(runs_df, plot_predictions, PLOT_SEED, plots_dir)
+        print()
 
     print_experiment_metadata(metadata)
     print_summary(summary_df)
     print(f"Resultados salvos em {results_dir}")
-    print(f"Diretório de gráficos: {plots_dir}")
+    print(f"Gráficos salvos em {plots_dir}")
