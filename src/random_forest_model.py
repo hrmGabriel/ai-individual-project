@@ -15,6 +15,7 @@ def train_random_forest(
     model = RandomForestRegressor(
         n_estimators=N_ESTIMATORS,
         random_state=seed,
+        n_jobs=-1,
     )
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
