@@ -17,7 +17,7 @@ projeto-individual/
 ├── src/
 │   ├── data_loader.py              # Carregamento do dataset
 │   ├── preprocessing.py            # Limpeza e conversão temporal
-│   ├── feature_engineering.py      # Monta as matrizes X (features) e y (alvo).
+│   ├── feature_engineering.py      # Monta as matrizes X (features) e y (alvo)
 │   ├── linear_regression_model.py  # Treina modelo de regressão linear
 │   ├── random_forest_model.py      # Treina modelo de random forest
 │   ├── evaluation.py               # Métricas e estatísticas
@@ -94,10 +94,3 @@ O experimento completo pode levar bastante tempo devido ao volume de dados (~2 m
 | `summary.csv`                 | Média, desvio padrão e mediana por modelo        |
 | `experiment_metadata.json`    | Metadados do experimento                         |
 | `plot_predictions_seed_1.npz` | Predições usadas no gráfico Real vs Predito      |
-
-
-## Documentação adicional
-
-- `[docs/spec.md](docs/spec.md)` — especificação completa do projeto
-- `[docs/implementacao.txt](docs/implementacao.txt)` — detalhes da implementação e metodologia experimental (base para relatório)
-
